@@ -4,7 +4,7 @@ const { series, src, dest, parallel, watch } = require("gulp");
 const webpack = require("webpack");
 const del = require("del");
 const autoprefixer = require("gulp-autoprefixer");
-const sass = require("gulp-sass")(require("sass"));
+///const sass = require("gulp-sass")(require("sass"));
 const sourcemaps = require("gulp-sourcemaps");
 const browserSync = require("browser-sync").create();
 
@@ -16,7 +16,7 @@ const paths = {
     watch: "src/ts/**/*.ts",
   },
   styles: {
-    src: "src/scss/main.scss",
+    src: "src/css/**/*.css",
   },
   img: {
     src: "src/img/**/*",
@@ -41,9 +41,8 @@ function server() {
 }
 
 function styles() {
-  return src(paths.styles.src)
+  return src("src/css/**/*.css")  
     .pipe(sourcemaps.init())
-    .pipe(sass())
     .pipe(
       autoprefixer({
         cascade: false,
