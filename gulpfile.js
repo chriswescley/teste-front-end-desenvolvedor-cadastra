@@ -82,8 +82,12 @@ function html() {
   return src(paths.html.src).pipe(browserSync.stream()).pipe(dest(paths.dest));
 }
 
+const imagemin = require('gulp-imagemin');
+
 function img() {
-  return src(paths.img.src).pipe(dest(paths.dest + "/img"));
+  return src(paths.img.src)
+    .pipe(imagemin())
+    .pipe(dest(paths.dest + "/img"));
 }
 
 const build = series(clean, parallel(styles, scripts, html, img));
