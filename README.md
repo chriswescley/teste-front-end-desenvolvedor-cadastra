@@ -41,8 +41,8 @@ Este comando irá iniciar dois servidores simultaneamente:
 ```
 ├── src/
 │   ├── img/          # Imagens do projeto
-│   ├── scss/         # Arquivos de estilo
-│   ├── ts/           # Arquivos TypeScript
+│   ├── css/         # Arquivos de estilo
+│   ├── js/           # Arquivos Javascript
 │   └── index.html    # Página principal
 ├── dist/             # Arquivos compilados (gerado automaticamente)
 └── package.json      # Dependências e scripts

@@ -332,13 +332,14 @@ function updateCart() {
   const cartTotal = cart.reduce((sum, item) => sum + ((Number(item.price) || 0) * (Number(item.quantity) || 0)), 0);
 
   if (cartCount) {
-    cartCount.textContent = totalItems;
-    cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
-    
-    cartCount.style.transition = 'transform 0.2s';
-    cartCount.style.transform = 'scale(1.15)';
-    setTimeout(() => { cartCount.style.transform = 'scale(1)'; }, 150);
-  }
+  cartCount.textContent = totalItems;  
+  cartCount.style.display = 'flex';
+
+  cartCount.style.transition = 'transform 0.2s';
+  cartCount.style.transform = 'scale(1.15)';
+  setTimeout(() => { cartCount.style.transform = 'scale(1)'; }, 150);
+}
+
 
   if (cartTotalElement) {
     cartTotalElement.textContent = `R$ ${cartTotal.toFixed(2).replace('.', ',')}`;
