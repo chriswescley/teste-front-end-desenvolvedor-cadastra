@@ -48,6 +48,34 @@ Este comando irá iniciar dois servidores simultaneamente:
 └── package.json      # Dependências e scripts
 ```
 
+## 🧩 Funcionalidades do site
+
+Foram adicionadas novas interações e recursos para tornar o e-commerce mais completo e dinâmico:
+
+### 🛒 Carrinho de Compras
+- Adição e remoção de produtos.
+- Atualização de quantidade de itens.
+- Cálculo automático do valor total.
+- Persistência dos dados no **localStorage**, mantendo o carrinho mesmo após recarregar a página.
+
+### 🎨 Filtros Dinâmicos
+- **Cor:** permite exibir apenas produtos de cores específicas.
+- **Tamanho:** filtragem por tamanhos disponíveis (P, M, G, GG, etc.).
+- **Faixa de preço:** seleção de intervalos de valores.
+- Combinação de múltiplos filtros simultaneamente.
+
+### ↕️ Ordenação de Produtos
+- Ordenação por **mais recente**, **menor preço** ou **maior preço**.
+- Atualização instantânea da listagem sem recarregar a página.
+
+### 📄 Paginação
+- Exibição limitada de produtos por página.
+- Navegação dinâmica entre páginas com atualização fluida dos itens.
+
+### 💾 Persistência
+- Os produtos exibidos e o carrinho utilizam dados obtidos via **JSON Server**.
+- O estado do carrinho é mantido no **localStorage**.
+
 ## 🔧 Scripts disponíveis
 
 - `npm start` - Inicia o servidor de desenvolvimento
