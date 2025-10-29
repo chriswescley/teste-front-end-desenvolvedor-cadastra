@@ -4,23 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastra - Blusas</title>
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
-            <img class="logo" src="img/logo-cadastra.png" alt="">
-            <button class="cart-btn">
-                <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink">
+            <a href="/"><img class="logo" src="img/logo-cadastra.png" alt="Cadastra"></a>
+            <button class="cart-btn" onclick="toggleCart()">
+                <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="17" height="20" fill="url(#pattern0_2_13)" />
                     <defs>
                         <pattern id="pattern0_2_13" patternContentUnits="objectBoundingBox" width="1" height="1">
-                            <use xlink:href="#image0_2_13" transform="scale(0.0588235 0.05)" />
+                            <use href="#image0_2_13" transform="scale(0.0588235 0.05)" />
                         </pattern>
                         <image id="image0_2_13" width="17" height="20" preserveAspectRatio="none"
-                            xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAUCAYAAABroNZJAAAAvElEQVQ4Ea2TAQ0CMQxFnwQkIAUJSMAJOAAJOAAH4ORwAA4gb1lJLnAH6faTpXdt/9+6/MF3LIAtcAauNfpv/i8sK+kAnIBLjfuat/4T7uzaAUEwKhq1WZE1cAc2E13mH4B9k3B372EO1u37gDt4cTG/31Mr7sn66MTO+kwseW9kBILTT0QDhWomFgOuGkXk00VE42TGCE4xnsaJRCYW43UROTaexIdZXmZmjOAU12YtPxK5NY4zOE4opuMLN/z2esJif9wAAAAASUVORK5CYII=" />
+                            href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAUCAYAAABroNZJAAAAvElEQVQ4Ea2TAQ0CMQxFnwQkIAUJSMAJOAAJOAAH4ORwAA4gb1lJLnAH6faTpXdt/9+6/MF3LIAtcAauNfpv/i8sK+kAnIBLjfuat/4T7uzaAUEwKhq1WZE1cAc2E13mH4B9k3B372EO1u37gDt4cTG/31Mr7sn66MTO+kwseW9kBILTT0QDhWomFgOuGkXk00VE42TGCE4xnsaJRCYW43UROTaexIdZXmZmjOAU12YtPxK5NY4zOE4opuMLN/z2esJif9wAAAAASUVORK5CYII=" />
                     </defs>
                 </svg>
                 <span class="cart-count">0</span>
@@ -35,8 +34,8 @@
             <div class="page-header-mobile">
                 <h2>Blusas</h2>
                 <div class="mobile-actions">
-                    <button class="btn-filter">Filtrar</button>
-                    <button class="btn-sort">Ordenar</button>
+                    <button class="btn-filter" onclick="toggleFilterModal()">Filtrar</button>
+                    <button class="btn-sort" onclick="toggleSortModal()">Ordenar</button>
                 </div>
             </div>
 
@@ -47,85 +46,55 @@
 
                     <!-- Filtro de Cores -->
                     <div class="filter-section">
-                        <h3 class="filter-title">Cores</h3>
-                        <div class="filter-options">
-                            <label class="filter-checkbox">
-                                <input type="checkbox" name="color" value="amarelo">
-                                <span class="checkmark"></span>
-                                Amarelo
-                            </label>
-                            <label class="filter-checkbox">
-                                <input type="checkbox" name="color" value="azul">
-                                <span class="checkmark"></span>
-                                Azul
-                            </label>
-                            <label class="filter-checkbox">
-                                <input type="checkbox" name="color" value="branco">
-                                <span class="checkmark"></span>
-                                Branco
-                            </label>
-                            <label class="filter-checkbox">
-                                <input type="checkbox" name="color" value="cinza">
-                                <span class="checkmark"></span>
-                                Cinza
-                            </label>
-                            <label class="filter-checkbox">
-                                <input type="checkbox" name="color" value="laranja">
-                                <span class="checkmark"></span>
-                                Laranja
-                            </label>
+                        <h3 class="filter-title">CORES</h3>
+                        <div class="filter-options" id="desktop-color-filters">
+                            <!-- Cores serão inseridas via JS -->
                         </div>
                     </div>
 
                     <!-- Filtro de Tamanhos -->
                     <div class="filter-section">
-                        <h3 class="filter-title">Tamanhos</h3>
+                        <h3 class="filter-title">TAMANHOS</h3>
                         <div class="filter-sizes">
-                            <button class="size-btn">P</button>
-                            <button class="size-btn">M</button>
-                            <button class="size-btn">G</button>
-                            <button class="size-btn">GG</button>
+                            <button class="size-btn" onclick="handleSizeFilter('P')">P</button>
+                            <button class="size-btn" onclick="handleSizeFilter('M')">M</button>
+                            <button class="size-btn" onclick="handleSizeFilter('G')">G</button>
+                            <button class="size-btn" onclick="handleSizeFilter('GG')">GG</button>
                         </div>
                         <div class="filter-sizes">
-                            <button class="size-btn">U</button>
-                            <button class="size-btn">36</button>
-                            <button class="size-btn">38</button>
-                            <button class="size-btn">40</button>
+                            <button class="size-btn" onclick="handleSizeFilter('U')">U</button>
+                            <button class="size-btn" onclick="handleSizeFilter('36')">36</button>
+                            <button class="size-btn" onclick="handleSizeFilter('38')">38</button>
+                            <button class="size-btn" onclick="handleSizeFilter('40')">40</button>
                         </div>
                         <div class="filter-sizes">
-                            <button class="size-btn">36</button>
-                            <button class="size-btn">38</button>
-                            <button class="size-btn">40</button>
+                            <button class="size-btn" onclick="handleSizeFilter('42')">42</button>
+                            <button class="size-btn" onclick="handleSizeFilter('44')">44</button>
                         </div>
                     </div>
 
                     <!-- Filtro de Preço -->
                     <div class="filter-section">
-                        <h3 class="filter-title">Faixa de Preço</h3>
+                        <h3 class="filter-title">FAIXA DE PREÇO</h3>
                         <div class="filter-options">
                             <label class="filter-checkbox">
-                                <input type="checkbox" name="price" value="0-50">
-                                <span class="checkmark"></span>
+                                <input type="checkbox" name="price" value="0-50" onchange="handlePriceFilter('0-50')">
                                 de R$0 até R$50
                             </label>
                             <label class="filter-checkbox">
-                                <input type="checkbox" name="price" value="51-150">
-                                <span class="checkmark"></span>
+                                <input type="checkbox" name="price" value="51-150" onchange="handlePriceFilter('51-150')">
                                 de R$51 até R$150
                             </label>
                             <label class="filter-checkbox">
-                                <input type="checkbox" name="price" value="151-300">
-                                <span class="checkmark"></span>
+                                <input type="checkbox" name="price" value="151-300" onchange="handlePriceFilter('151-300')">
                                 de R$151 até R$300
                             </label>
                             <label class="filter-checkbox">
-                                <input type="checkbox" name="price" value="301-500">
-                                <span class="checkmark"></span>
+                                <input type="checkbox" name="price" value="301-500" onchange="handlePriceFilter('301-500')">
                                 de R$301 até R$500
                             </label>
                             <label class="filter-checkbox">
-                                <input type="checkbox" name="price" value="500+">
-                                <span class="checkmark"></span>
+                                <input type="checkbox" name="price" value="500+" onchange="handlePriceFilter('500+')">
                                 a partir de R$ 500
                             </label>
                         </div>
@@ -136,32 +105,24 @@
                 <section class="products-section">
                     <!-- Sort Desktop -->
                     <div class="products-header">
-                        <select class="sort-select">
+                        <select class="sort-select" onchange="handleSort(event)">
                             <option value="">Ordenar por</option>
-                            <option value="recent">Mais recentes</option>
+                            <option value="recent">Mais recente</option>
                             <option value="price-low">Menor preço</option>
                             <option value="price-high">Maior preço</option>
                         </select>
                     </div>
 
+                    
+
                     <!-- Products Grid -->
                     <div class="products-grid" id="products-grid">
                         <!-- Produtos serão inseridos via JS -->
-                        <!-- Exemplo de produto -->
-                        <div class="product-card">
-                            <div class="product-image">
-                                <img src="img/img_2.png" alt="Camiseta Mescla">
-                            </div>
-                            <h3 class="product-name">CAMISETA MESCLA</h3>
-                            <p class="product-price">R$ 28,00</p>
-                            <p class="product-installment">até 3x de R$9,33</p>
-                            <button class="btn-buy">COMPRAR</button>
-                        </div>
                     </div>
 
                     <!-- Load More Button -->
                     <div class="load-more-container">
-                        <button class="btn-load-more">CARREGAR MAIS</button>
+                        <button class="btn-load-more" onclick="loadMore()">CARREGAR MAIS</button>
                     </div>
                 </section>
             </div>
@@ -173,16 +134,16 @@
         <p>CADASTRA - IMPLANTAÇÃO DE E-COMMERCE VTEX</p>
     </footer>
 
-    <!-- Cart Sidebar (Mobile) -->
+    <!-- Cart Sidebar -->
     <div class="cart-sidebar" id="cart-sidebar">
-        <div class="cart-overlay"></div>
+        <div class="cart-overlay" onclick="toggleCart()"></div>
         <div class="cart-content">
             <div class="cart-header">
                 <h2>Carrinho</h2>
-                <button class="cart-close">&times;</button>
+                <button class="cart-close" onclick="toggleCart()">&times;</button>
             </div>
             <div class="cart-items" id="cart-items">
-                <!-- Items will be inserted here -->
+                <div class="cart-empty"><p>Seu carrinho está vazio</p></div>
             </div>
             <div class="cart-footer">
                 <div class="cart-total">
@@ -196,21 +157,109 @@
 
     <!-- Filter Modal (Mobile) -->
     <div class="filter-modal" id="filter-modal">
-        <div class="filter-modal-overlay"></div>
+        <div class="filter-modal-overlay" onclick="toggleFilterModal()"></div>
         <div class="filter-modal-content">
             <div class="filter-modal-header">
-                <h2>Filtros</h2>
-                <button class="filter-modal-close">&times;</button>
+                <h2>FILTRAR</h2>
+                <button class="filter-modal-close" onclick="toggleFilterModal()">×</button>
             </div>
             <div class="filter-modal-body">
-                <!-- Same filters as sidebar -->
+                <!-- Cores -->
+                <div class="filter-group-mobile">
+                    <div class="filter-group-header" onclick="toggleFilterGroup(this)">
+                        <span>CORES</span>
+                        <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+                            <path d="M1 1L6 6L11 1" stroke="#333" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="filter-group-content">
+                        <div class="filter-options" id="mobile-color-filters">
+                            <!-- Cores serão inseridas via JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tamanhos -->
+                <div class="filter-group-mobile">
+                    <div class="filter-group-header" onclick="toggleFilterGroup(this)">
+                        <span>TAMANHOS</span>
+                        <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+                            <path d="M1 1L6 6L11 1" stroke="#333" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="filter-group-content">
+                        <div class="filter-sizes">
+                            <button class="size-btn" onclick="handleSizeFilter('P')">P</button>
+                            <button class="size-btn" onclick="handleSizeFilter('M')">M</button>
+                            <button class="size-btn" onclick="handleSizeFilter('G')">G</button>
+                            <button class="size-btn" onclick="handleSizeFilter('GG')">GG</button>
+                        </div>
+                        <div class="filter-sizes">
+                            <button class="size-btn" onclick="handleSizeFilter('U')">U</button>
+                            <button class="size-btn" onclick="handleSizeFilter('36')">36</button>
+                            <button class="size-btn" onclick="handleSizeFilter('38')">38</button>
+                            <button class="size-btn" onclick="handleSizeFilter('40')">40</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Faixa de Preço -->
+                <div class="filter-group-mobile">
+                    <div class="filter-group-header" onclick="toggleFilterGroup(this)">
+                        <span>FAIXA DE PREÇO</span>
+                        <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+                            <path d="M1 1L6 6L11 1" stroke="#333" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="filter-group-content">
+                        <div class="filter-options">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="price-mobile" value="0-50" onchange="handlePriceFilter('0-50')">
+                                de R$0 até R$50
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="price-mobile" value="51-150" onchange="handlePriceFilter('51-150')">
+                                de R$51 até R$150
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="price-mobile" value="151-300" onchange="handlePriceFilter('151-300')">
+                                de R$151 até R$300
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="price-mobile" value="301-500" onchange="handlePriceFilter('301-500')">
+                                de R$301 até R$500
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="price-mobile" value="500+" onchange="handlePriceFilter('500+')">
+                                a partir de R$ 500
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="filter-modal-footer">
-                <button class="btn-apply-filters">Aplicar Filtros</button>
+                <button class="btn-clear-filters" onclick="clearFilters()">LIMPAR</button>
+                <button class="btn-apply-filters" onclick="toggleFilterModal()">APLICAR</button>
             </div>
         </div>
     </div>
 
-    <script src="bundle.js"></script>
+    <!-- Sort Modal (Mobile) -->
+    <div class="sort-modal" id="sort-modal">
+        <div class="sort-modal-overlay" onclick="toggleSortModal()"></div>
+        <div class="sort-modal-content">
+            <div class="sort-modal-header">
+                <h2>ORDENAR</h2>
+                <button class="sort-modal-close" onclick="toggleSortModal()">×</button>
+            </div>
+            <div class="sort-modal-body">
+                <div class="sort-option" onclick="sortProducts('recent')">Mais recente</div>
+                <div class="sort-option" onclick="sortProducts('price-high')">Maior preço</div>
+                <div class="sort-option" onclick="sortProducts('price-low')">Menor preço</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>

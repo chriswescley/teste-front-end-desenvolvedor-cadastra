@@ -1,19 +1,19 @@
 const path = require("path");
 
 const { series, src, dest, parallel, watch } = require("gulp");
-const webpack = require("webpack");
+//const webpack = require("webpack");
 const del = require("del");
 const autoprefixer = require("gulp-autoprefixer");
 ///const sass = require("gulp-sass")(require("sass"));
 const sourcemaps = require("gulp-sourcemaps");
 const browserSync = require("browser-sync").create();
 
-const webpackConfig = require("./webpack.config.js");
+//const webpackConfig = require("./webpack.config.js");
 
 const paths = {
   scripts: {
-    src: "src/ts/index.ts",
-    watch: "src/ts/**/*.ts",
+    src: "src/js/**/*.js",
+    watch: "src/js/**/*.js",
   },
   styles: {
     src: "src/css/**/*.css",
@@ -54,27 +54,9 @@ function styles() {
 }
 
 function scripts() {
-  return new Promise((resolve) =>
-    webpack(webpackConfig(paths), (err, stats) => {
-      if (err) console.log("Webpack", err);
-
-      console.log(
-        stats.toString({
-          all: false,
-          modules: true,
-          maxModules: 0,
-          errors: true,
-          warnings: true,
-          moduleTrace: true,
-          errorDetails: true,
-          colors: true,
-          chunks: true,
-        })
-      );
-
-      resolve();
-    })
-  );
+  return src("src/js/**/*.js")
+    .pipe(dest(paths.dest))
+    .pipe(browserSync.stream());
 }
 
 function html() {

@@ -1,4 +1,5 @@
-/* Reset e Base */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +7,7 @@
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: #333;
   line-height: 1.6;
   background: #FFFFFF;
@@ -20,8 +21,7 @@ img {
 button {
   cursor: pointer;
   border: none;
-  font-family: "Open Sans", sans-serif;
-
+  font-family: 'Open Sans', sans-serif;
 }
 
 /* Container */
@@ -61,21 +61,16 @@ button {
   gap: 8px;
 }
 
-.cart-btn svg {
-  stroke: #000;
-  stroke-width: 2;
-}
-
 .cart-count {
   position: absolute;
-  top: 0;
-  right: 0;
-  background: #f50057;
+  top: -5px;
+  right: -5px;
+  background: #FB953E;
   color: #fff;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
-  min-width: 18px;
-  height: 18px;
+  min-width: 17px;
+  height: 17px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -92,39 +87,47 @@ button {
 /* Mobile Header */
 .page-header-mobile {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 16px;
   margin-bottom: 24px;
-  background: #fff;
-  padding: 16px;
-  border-radius: 4px;
+  padding: 20px 16px;
 }
 
 .page-header-mobile h2 {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 28px;
+  font-weight: 400;
+  text-align: center;
 }
 
 .mobile-actions {
-  display: flex;
-  gap: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
 }
 
 .btn-filter,
 .btn-sort {
   background: #fff;
-  border: 1px solid #ddd;
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 500;
+  border: 1px solid #ccc;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #333;
+}
+
+.btn-filter {
+  border-right: none;
+}
+
+.btn-sort {
+  border-left: 1px solid #ccc;
 }
 
 /* Shop Layout */
 .shop-layout {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 120px;
+  gap: 24px;
 }
 
 /* Sidebar */
@@ -160,28 +163,74 @@ button {
   letter-spacing: 1px;
   margin-bottom: 16px;
   color: #666;
-  text-transform: uppercase;
 }
 
 .filter-options {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 8px;
 }
 
+/* Custom Checkbox */
 .filter-checkbox {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   cursor: pointer;
   font-size: 14px;
-  color: #333;
+  font-weight: 400;
+  color: #000;
 }
 
 .filter-checkbox input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   width: 18px;
   height: 18px;
+  border: 1px solid #666;
+  background: #fff;
   cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.filter-checkbox input[type="checkbox"]:checked {
+  border-color: #000;
+}
+
+.filter-checkbox input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: #FB953E;
+  border-radius: 2px;
+}
+
+/* Ver todas as cores button */
+.btn-show-more {
+  background: transparent;
+  color: #666;
+  font-size: 13px;
+  text-decoration: underline;
+  margin-top: 8px;
+  padding: 4px 0;
+  text-align: left;
+}
+
+.hidden-colors {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: -6px;
+}
+
+.hidden-colors label {
+  margin-top: 10px;;
 }
 
 .filter-sizes {
@@ -191,7 +240,7 @@ button {
 }
 
 .filter-sizes:not(:first-child) {
-  margin-top: 8px; /* espaço entre grids */
+  margin-top: 8px;
 }
 
 .size-btn {
@@ -232,6 +281,35 @@ button {
   min-width: 200px;
 }
 
+.custom-select {
+  position: relative;
+  font-size: 14px;
+  min-width: 200px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.select-selected {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px 16px;
+}
+
+.select-items {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  display: none;
+  flex-direction: column;
+}
+
+
 /* Products Grid */
 .products-grid {
   display: grid;
@@ -243,7 +321,6 @@ button {
 .product-card {
   background: #fff;
   border-radius: 4px;
-  max-width: 195px;
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -264,13 +341,13 @@ button {
   position: absolute;
   top: 0;
   left: 0;
-  width: 195px;
-  height: 295px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
 .product-name {
-  font-size: 13px;
+  font-size: 13px; // precisei diminuir pra encaixar 
   font-weight: 600;
   text-transform: uppercase;
   padding: 12px 12px 4px;
@@ -292,10 +369,7 @@ button {
 
 .btn-buy {
   width: 100%;
-  max-height: 33px;
-  align-items: center;
-  display: flex;
-  justify-content: center;
+  padding: 12px;
   background: #000;
   color: #fff;
   font-size: 13px;
@@ -312,21 +386,24 @@ button {
 .load-more-container {
   text-align: center;
   margin: 32px 0;
+  display: flex;
+  justify-content: center;
 }
 
 .btn-load-more {
   padding: 14px 48px;
-  background: #ff6f00;
+  background: #FB953E;
   color: #fff;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.5px;
   border-radius: 4px;
   transition: background 0.2s;
+  text-transform: uppercase;
 }
 
 .btn-load-more:hover {
-  background: #e56100;
+  background: #e5853d;
 }
 
 /* Footer */
@@ -361,6 +438,7 @@ button {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 
 .cart-content {
@@ -402,6 +480,69 @@ button {
   padding: 20px;
 }
 
+.cart-empty {
+  text-align: center;
+  color: #999;
+  padding: 40px 20px;
+}
+
+.cart-item {
+  display: flex;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.cart-item img {
+  width: 80px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-info h4 {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.cart-item-info p {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.cart-item-quantity button {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 50%;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-item > button {
+  background: transparent;
+  font-size: 24px;
+  color: #999;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+}
+
 .cart-footer {
   padding: 20px;
   border-top: 1px solid #e0e0e0;
@@ -438,7 +579,8 @@ button {
 }
 
 /* Filter Modal (Mobile) */
-.filter-modal {
+.filter-modal,
+.sort-modal {
   display: none;
   position: fixed;
   top: 0;
@@ -448,130 +590,183 @@ button {
   z-index: 1000;
 }
 
-.filter-modal.active {
+.filter-modal.active,
+.sort-modal.active {
   display: block;
 }
 
-.filter-modal-overlay {
+.filter-modal-overlay,
+.sort-modal-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 
-.filter-modal-content {
+.filter-modal-content,
+.sort-modal-content {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
-  max-height: 80vh;
+  height: 100%;
   background: #fff;
-  border-radius: 16px 16px 0 0;
   display: flex;
   flex-direction: column;
-  animation: slideUp 0.3s ease;
+  animation: slideInLeft 0.3s ease;
 }
 
-.filter-modal-header {
+.filter-modal-header,
+.sort-modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
   border-bottom: 1px solid #e0e0e0;
+  background: #fff;
 }
 
-.filter-modal-header h2 {
-  font-size: 18px;
-  font-weight: 600;
+.filter-modal-header h2,
+.sort-modal-header h2 {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: #333;
+  text-transform: uppercase;
 }
 
-.filter-modal-close {
+.filter-modal-close,
+.sort-modal-close {
   font-size: 28px;
   background: transparent;
   color: #666;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
-.filter-modal-body {
+.filter-modal-body,
+.sort-modal-body {
   flex: 1;
   overflow-y: auto;
+  padding: 0;
+  background: #white;
+}
+
+/* Accordion filters */
+.filter-group-mobile {
+  background: #fff;
+  margin-bottom: 8px;
+}
+
+.filter-group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: #666;
+  text-transform: uppercase;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.filter-group-header svg {
+  transition: transform 0.3s ease;
+  stroke: #999;
+}
+
+.filter-group-header.active svg {
+  transform: rotate(180deg);
+}
+
+.filter-group-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.filter-group-content.active {
+  max-height: 800px;
   padding: 20px;
+}
+
+.filter-group-content .filter-options {
+  gap: 12px;
+}
+
+.filter-group-content .filter-sizes {
+  margin-top: 0;
 }
 
 .filter-modal-footer {
   padding: 16px 20px;
   border-top: 1px solid #e0e0e0;
+  display: flex;
+  gap: 10px;
+  background: #fff;
 }
 
-.btn-apply-filters {
-  width: 100%;
+.btn-apply-filters,
+.btn-clear-filters {
+  flex: 1;
   padding: 14px;
-  background: #000;
-  color: #fff;
   font-size: 14px;
   font-weight: 700;
   border-radius: 4px;
+  text-transform: uppercase;
 }
 
-/* === Custom Checkbox === */
-.filter-checkbox {
-  display: flex;
-  font-family: "Open Sans", sans-serif;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 400;
-  color: #000000;
+.btn-apply-filters {
+  background: #FB953E;
+  color: #fff;
+  border: none;
 }
 
-/* Remove o padrão do navegador */
-.filter-checkbox input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  width: 18px;
-  height: 18px;
-  border: 1px solid #666;
+.btn-clear-filters {
   background: #fff;
+  color: #000;
+  border: 1px solid #e0e0e0;
+}
+
+/* Sort Modal */
+.sort-modal-body {
+  padding: 0;
+  background: #fff;
+}
+
+.sort-option {
+  padding: 20px;
+  border-bottom: 1px solid #f0f0f0;
   cursor: pointer;
-  position: relative;
-  transition: all 0.2s ease;
+  font-size: 15px;
+  font-weight: 400;
+  transition: background 0.2s;
+  color: #333;
 }
 
-/* Fundo preto quando selecionado */
-.filter-checkbox input[type="checkbox"]:checked {
-  border-color: #000;
+.sort-option:hover {
+  background: #f9f9f9;
 }
 
-/* Quadrado central colorido */
-.filter-checkbox input[type="checkbox"]:checked::after {
-  content: "";
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
-  background: #FB953E; /* cor de preenchimento */
-  border-radius: 2px;
-  transition: background 0.2s ease;
+.sort-option:last-child {
+  border-bottom: none;
 }
 
-/* Efeito de foco */
-.filter-checkbox input[type="checkbox"]:focus {
-  outline: 0px solid #000;
-  outline-offset: 2px;
-}
-
-
-
-@keyframes slideUp {
+@keyframes slideInLeft {
   from {
-    transform: translateY(100%);
+    transform: translateX(-100%);
   }
   to {
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 
@@ -583,6 +778,7 @@ button {
 
   .shop-layout {
     grid-template-columns: 250px 1fr;
+    gap: 40px;
   }
 
   .sidebar {
@@ -596,26 +792,34 @@ button {
   .products-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    margin-left: 30px;
+  }
+
+  .product-card {
+    max-width: 100%;
   }
 
   .product-name {
-    font-size: 14px !important;
-    padding: 16px 16px 8px !important;
+    font-size: 14px;
+    padding: 16px 16px 8px;
   }
 
   .product-price {
-    font-size: 18px !important;
-    padding: 0 16px !important;
+    font-size: 18px;
+    padding: 0 16px;
   }
 
   .product-installment {
-    font-size: 12px !important;
-    padding: 4px 16px 16px !important;
+    font-size: 12px;
+    padding: 4px 16px 16px;
   }
 
   .btn-buy {
-    padding: 14px !important;
-    font-size: 14px !important;
+    padding: 14px;
+    font-size: 14px;
+  }
+
+  .filter-modal,
+  .sort-modal {
+    display: none !important;
   }
 }
